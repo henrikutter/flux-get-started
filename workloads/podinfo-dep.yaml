@@ -8,7 +8,6 @@ metadata:
     app: podinfo
   annotations:
     fluxcd.io/tag.init: regex:^3.10.*
-    fluxcd.io/tag.podinfod: semver:~3.1
     fluxcd.io/automated: 'true'
 spec:
   strategy:
@@ -28,13 +27,13 @@ spec:
     spec:
       initContainers:
       - name: init
-        image: alpine:3.10
+        image: alpine:3.10.2
         command:
         - sleep
         - "3"
       containers:
       - name: podinfod
-        image: stefanprodan/podinfo:3.1.5
+        image: stefanprodan/podinfo:3.1.2
         imagePullPolicy: IfNotPresent
         ports:
         - name: http
